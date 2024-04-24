@@ -6,9 +6,12 @@ class DataProcessor:
     def __init__(self):
         self.df = pd.DataFrame(columns=['Player', 'Salary', 'Year'])
 
-    def add_data(self, data, year):
-        temp_df = pd.DataFrame(data, columns=['Player', 'Salary'])
-        temp_df['Year'] = year
+    def add_data(self, player_objects):
+        temp_df = pd.DataFrame([
+            {'Player': player.name, 'Salary': player.salary, 'Year': player.year}
+            for player in player_objects
+        ])
+        
         self.df = pd.concat([self.df, temp_df], ignore_index=True)
 
     def clean_data(self):

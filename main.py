@@ -11,8 +11,8 @@ for year in range(1990, 2024):
     page_number = f'{str(year)}-{str(year + 1)}/'
     url = f'{BASE_URL}{page_number}'
     
-    scraped_data = scraper.scrape_page(url)
-    processor.add_data(scraped_data, year)
+    scraped_data = scraper.scrape_page(url, year)
+    processor.add_data(scraped_data)
 
 browser.close()
 processor.clean_data()
